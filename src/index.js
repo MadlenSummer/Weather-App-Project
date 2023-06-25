@@ -1,23 +1,49 @@
+function formatTime(timestamp, timezoneOffset) {
+    let time = new Date(timestamp * 1000);
+    let localTime = new Date(time.getTime() + timezoneOffset * 1000);
+    let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+    let months = [
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr",
+        "May",
+        "Jun",
+        "Jul",
+        "Aug",
+        "Sep",
+        "Oct",
+        "Nov",
+        "Dec"
+    ];
+    let day = days[localTime.getUTCDay()];
+    let date = localTime.getUTCDate();
+    let year = localTime.getUTCFullYear();
+    let month = months[localTime.getUTCMonth()];
+    let hours = localTime.getUTCHours().toString().padStart(2, "0");
+    let minutes = localTime.getUTCMinutes().toString().padStart(2, "0");
+
+    return `${day} ${date} ${month} ${year} ${hours}:${minutes}`;
+}
+
 function displayWeatherCondition(response) {
     console.log(response.data);
 
     let temperatureElement = document.querySelector("#temperature");
     let cityElement = document.querySelector("#city");
-    
+    let timeElement = document.querySelector("#time");
+
     temperatureElement.innerHTML = Math.round(response.data.main.temp);
-    cityElement.innerHTML = response.data.main.name;
+    cityElement.innerHTML = response.data.name;
 
     document.querySelector("#humidity").innerHTML = Math.round(response.data.main.humidity);
-
     document.querySelector("#wind").innerHTML = Math.round(response.data.wind.speed);
-
     document.querySelector("#description").innerHTML = response.data.weather[0].main;
-    
+
+    timeElement.innerHTML = formatTime(response.data.dt, response.data.timezone);
 }
-  let apiKey = "3980a7c8f2a782241a093131b099f993";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=Lagos&appid=${apiKey}&units=metric`;
-  
-  axios.get(apiUrl).then(displayWeatherCondition);
 
+let apiKey = "3980a7c8f2a782241a093131b099f993";
+let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=Honolulu&appid=${apiKey}&units=metric`;
 
-
+axios.get(apiUrl).then(displayWeatherCondition);
