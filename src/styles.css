@@ -106,33 +106,34 @@ h1 {
 
 .box {
     float: right;
-    margin-top: 20px;
+    display: flex;
 }
 
-.weather i {
+#icon {
     font-size: 60px;
     color: #212121;
 }
 
-.weather #temperature {
+#temperature {
     color: #212121;
     font-size: 80px;
     font-weight: 400;
     font-weight: 700;
     line-height: 1;
     margin-left: 20px;
+    margin-right: 10px;
 
 }
 
-.weather #units {
+#units .celsius-link .fahrenheit-link {
     font-size: 18px;
     font-weight: 400;
     line-height: 36px;
     line-height: 1;
-    position: relative;
     top: -34px;
-    
+    float: right;
 }
+
 
 .weather a {
     color: #212121;
