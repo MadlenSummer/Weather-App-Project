@@ -46,7 +46,7 @@ function displayWeatherCondition(response) {
 }
 
 let apiKey = "3980a7c8f2a782241a093131b099f993";
-let city = "Honolulu"
+let city = "Lagos"
 let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 
 axios.get(apiUrl).then(displayWeatherCondition);
