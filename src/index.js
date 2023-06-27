@@ -45,8 +45,19 @@ function displayWeatherCondition(response) {
     timeElement.innerHTML = formatTime(response.data.dt, response.data.timezone);
 }
 
-let apiKey = "3980a7c8f2a782241a093131b099f993";
-let city = "Lagos"
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+function search(city) {
+    let apiKey = "3980a7c8f2a782241a093131b099f993";
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+    axios.get(apiUrl).then(displayWeatherCondition);
+}
 
-axios.get(apiUrl).then(displayWeatherCondition);
+function handleSubmit(event) {
+    event.preventDefault();
+    let textInputElement = document.querySelector("#text-input");
+    search(textInputElement.value);
+}
+
+search("Honolulu");
+
+let form = document.querySelector("#text-form");
+form.addEventListener("submit", handleSubmit);
