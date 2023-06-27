@@ -57,7 +57,31 @@ function handleSubmit(event) {
     search(textInputElement.value);
 }
 
-search("Honolulu");
+function convertToFahrenheit(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#temperature");
+  let temperature = parseInt(temperatureElement.textContent, 10);
+  let fahrenheit = Math.round((temperature * 9) / 5 + 32);
+  temperatureElement.textContent = fahrenheit;
+}
+
+function convertToCelsius(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#temperature");
+  let temperature = parseInt(temperatureElement.textContent, 10);
+  let celsius = Math.round(((temperature - 32) * 5) / 9);
+  temperatureElement.textContent = celsius;
+}
+
+let fahrenheitLink = document.querySelector("#fahrenheit-link");
+fahrenheitLink.addEventListener("click", convertToFahrenheit);
+
+let celsiusLink = document.querySelector("#celsius-link");
+celsiusLink.addEventListener("click", convertToCelsius);
+
 
 let form = document.querySelector("#text-form");
 form.addEventListener("submit", handleSubmit);
+
+
+search("Honolulu");
