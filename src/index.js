@@ -26,6 +26,36 @@ function formatTime(timestamp, timezoneOffset) {
     return `${day} ${date} ${month} ${year} ${hours}:${minutes}`;
 }
 
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri"];
+
+  let forecastHTML = `<div class="row">`;
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+      <div class="col-2">
+        <div class="weather-forecast-date">${day}</div>
+        <img
+          src="https://openweathermap.org/img/wn/03d@2x.png" 
+          alt="clear"
+          width="42"
+        />
+        <div class="weather-forecast-temperatures">
+          <span class="weather-forecast-temperature-max"> 31° </span>
+          <span class="weather-forecast-temperature-min"> 22° </span>
+        </div>
+      </div>
+  `;
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+  console.log(forecastHTML);
+}
+
 function displayWeatherCondition(response) {
 
     let temperatureElement = document.querySelector("#temperature");
@@ -85,3 +115,4 @@ form.addEventListener("submit", handleSubmit);
 
 
 search("Honolulu");
+displayForecast();

@@ -159,7 +159,7 @@ h1 {
     display: flex;
 }
 
-.forecast-temperature {
+.weather-forecast-temperatures {
     display: block;
 }
 
@@ -170,7 +170,9 @@ h1 {
     text-align: center;
 }
 
-.forecast-temperature-max {
+
+
+.weather-forecast-temperature-max {
     color: #f65282;
     font-size: 18px;
     font-style: normal;
@@ -178,7 +180,7 @@ h1 {
     line-height: 1.5;
 }
 
-.forecast-temperature-min {
+.weather-forecast-temperature-min {
     color: #f65282;
     font-size: 18px;
     font-style: normal;
@@ -196,5 +198,6 @@ footer {
 }
 
 footer a {
-    color: rgb(136, 93, 241);
+    color: rgb(136, 93, 241) !important;
+    text-decoration: none;
 }
